@@ -32,6 +32,7 @@ import {
 const routerUserDestacados = express.Router();
 
 routerUserDestacados.get("/", getAllDestacados);
+//routerUserDestacados.get("/:id", getDestacado);
 ////router2.get("/:id", getDestacado);
 //router2.post("/", createDestacado);
 //router2.put("/:id", updateDestacado);

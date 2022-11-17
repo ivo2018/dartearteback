@@ -1,5 +1,5 @@
 import express from "express";
-
+import { verifyToken } from "../../middlewares/auth.js";
 import {
   createProducto,
   deleteProducto,
@@ -10,7 +10,7 @@ import {
 const routerUserProductos = express.Router();
 
 routerUserProductos.get("/", getAllProductos);
-//router3.get("/:id", getProducto);
+routerUserProductos.get("/:id", verifyToken, getProducto);
 ///routerUserProductos.post("/", createProducto);
 ///router3.put("/:id", updateProducto);
 ///router3.delete("/:id", deleteProducto);

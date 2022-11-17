@@ -1,15 +1,18 @@
 import express from "express";
-//import { verifyToken } from "../middlewares/auth.js";
+import { verifyToken } from "../../middlewares/auth.js";
 
 import {
   createAdmin,
-
+  getAllAdmin,
+  getAdmin,
   //session,
   // verifyToken,
   // auth,
 } from "../../controllers/AuthController.js";
 const routerAdmin = express.Router();
+routerAdmin.get("/", verifyToken, getAllAdmin);
 
-routerAdmin.post("/create", createAdmin);
+routerAdmin.get("/:id", verifyToken, getAdmin);
+routerAdmin.post("/create", verifyToken, createAdmin);
 
 export default routerAdmin;

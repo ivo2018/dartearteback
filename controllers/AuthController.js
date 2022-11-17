@@ -24,6 +24,27 @@ import jwt from "jsonwebtoken";
     res.json({ message: error.message });
   }
 };*/
+
+export const getAllAdmin = async (req, res) => {
+  try {
+    const users = await AdminModel.findAll();
+    res.json(users);
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+};
+export const getAdmin = async (req, res) => {
+  try {
+    const user = await AdminModel.findAll({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.json(user[0]);
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+};
 export const getAllUsers = async (req, res) => {
   try {
     const users = await UsuariosModel.findAll();
@@ -59,7 +80,7 @@ export const createUser = async (req, res) => {
 
     await UsuariosModel.create(req.body).then((user) => {
       let token = jwt.sign({ user: user }, "secret", {
-        expiresIn: 300,
+        expiresIn: "24h",
       });
 
       res.json({
@@ -85,7 +106,7 @@ export const createAdmin = async (req, res) => {
 
     await AdminModel.create(req.body).then((user) => {
       let AdminToken = jwt.sign({ user: user }, "secret", {
-        expiresIn: 300,
+        expiresIn: "24h",
       });
 
       res.json({
@@ -126,7 +147,7 @@ export const loginUser = async (req, res) => {
             if (bcrypt.compareSync(password, user.password)) {
               // Creamos el token
               let AdminToken = jwt.sign({ user: user }, "secret", {
-                expiresIn: 300,
+                expiresIn: "24h",
               });
 
               //  res.status(200).send({ auth: true, accessToken: token });
@@ -147,7 +168,7 @@ export const loginUser = async (req, res) => {
         if (bcrypt.compareSync(password, user.password)) {
           // Creamos el token
           let token = jwt.sign({ user: user }, "secret", {
-            expiresIn: 300,
+            expiresIn: "24h",
           });
 
           //  res.status(200).send({ auth: true, accessToken: token });
@@ -205,7 +226,7 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    await UsuariosModel.destroy(req.body, {
+    await UsuariosModel.destroy({
       where: { id: req.params.id },
     });
     res.json({
