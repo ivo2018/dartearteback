@@ -13,13 +13,15 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import mysql from "mysql";
+import routerUserCompra from "./routes/users/routesCompra.js";
+import routerUserPedidos from "./routes/users/routesPedido.js";
 //import bcrypt from "bcrypt";
 //const saltRounds = 10;
 //import jwt from "jsonwebtoken";
 const app = express();
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-app.use(express.urlencoded({ extended: false }));
+//app.use(bodyParser.json({ limit: "50mb" }));
+//app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+//app.use(express.urlencoded({ extended: false }));
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -28,8 +30,9 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json({ limit: 52428800 }));
+
+app.use(bodyParser.json());
 
 app.use(morgan("dev"));
 
@@ -40,6 +43,8 @@ app.use("/blogs", Routes1);
 
 app.use("/destacados", routerUserDestacados);
 app.use("/shop", routerUserProductos);
+app.use("/compras", routerUserCompra);
+app.use("/pedidos", routerUserPedidos);
 app.use("/admin", routerAdmin);
 /*
 app.use(
