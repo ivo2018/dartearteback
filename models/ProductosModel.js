@@ -13,6 +13,8 @@ const ProductosModel = db.define("productos", {
   amountStock: { type: DataTypes.INTEGER },
   photo2: { type: DataTypes.BLOB },
   photo3: { type: DataTypes.BLOB },
+  descuento: { type: DataTypes.STRING },
+
   // rol: { type: DataTypes.STRING },
 });
 export default ProductosModel;

@@ -9,23 +9,19 @@ export const getPedidoById = async (req, res) => {
         idcomprador: req.params.idcomprador,
       },
     });
-    res.json(pedido[pedido.length - 1]);
+    res.json(pedido.slice(-1));
   } catch (error) {
     res.json({ message: error.message });
   }
 };
-/*export const getPedidoByIdPedidodor = async (req, res) => {
+export const getPedidos = async (req, res) => {
   try {
-    const Pedido = await PedidosModel.findAll({
-      where: {
-        idpedidos: req.params.idpedidos,
-      },
-    });
+    const Pedido = await PedidosModel.findAll({});
     res.json(Pedido);
   } catch (error) {
     res.json({ message: error.message });
   }
-};*/
+};
 export const createPedido = async (req, res) => {
   try {
     await PedidosModel.create(req.body);

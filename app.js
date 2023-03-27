@@ -1,5 +1,9 @@
 import express from "express";
 import cors from "cors";
+import Stripe from "stripe";
+const stripe = new Stripe(
+  "sk_test_51Mp2YHCMWK3SyzV82RL9gs6HDhJbe9jZO8Ouqxyg4ADjlRd0coeBmlndnytOo5ZZj5niENzvO8PafLkAYSV9Sdn2003zpuGOqM"
+);
 import db from "./database/db.js";
 import Routes1 from "./routes/routes.js";
 import Routes2 from "./routes/admin/routesDestacados.js";
@@ -65,7 +69,27 @@ try {
 } catch (error) {
   console.log(`errror de conexion :${error} `);
 }
+app.post("/api/checkout", async (req, res) => {
+  // you can get more data to find in a database, and so on
+  const { id, amount } = req.body;
 
+  try {
+    const payment = await stripe.paymentIntents.create({
+      amount,
+      currency: "USD",
+      description: "Gaming Keyboard",
+      payment_method: id,
+      confirm: true, //confirm the payment at the same time
+    });
+
+    console.log(payment);
+
+    return res.status(200).json({ message: "Successful Payment" });
+  } catch (error) {
+    console.log(error);
+    return res.json({ message: error.raw.message });
+  }
+});
 /*
 const dbb = mysql.createConnection({
   user: "root",
