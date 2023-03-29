@@ -28,7 +28,7 @@ const app = express();
 //app.use(express.urlencoded({ extended: false }));
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://dartearte.netlify.app",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
