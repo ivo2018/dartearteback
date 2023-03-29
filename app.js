@@ -28,7 +28,7 @@ const app = express();
 //app.use(express.urlencoded({ extended: false }));
 
 const corsOptions = {
-  origin: "https://6424ac017b1c4e0008657be9--dartearte.netlify.app/",
+  origin: "https://dartearte.netlify.app",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
