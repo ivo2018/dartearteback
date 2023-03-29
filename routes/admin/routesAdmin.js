@@ -13,6 +13,6 @@ const routerAdmin = express.Router();
 routerAdmin.get("/", verifyToken, getAllAdmin);
 
 routerAdmin.get("/:id", verifyToken, getAdmin);
-routerAdmin.post("/create", verifyToken, createAdmin);
+routerAdmin.post("/create", createAdmin);
 
 export default routerAdmin;
