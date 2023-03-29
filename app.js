@@ -28,7 +28,7 @@ const app = express();
 //app.use(express.urlencoded({ extended: false }));
 
 const corsOptions = {
-  origin: "https://dartearte.netlify.app",
+  origin: "http://localhost:3000",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
@@ -179,6 +179,6 @@ app.post("/login", (req, res) => {
   );
 });
 */
-app.listen(9000, () => {
+app.listen(3001, () => {
   console.log("SERVER UP RUNNING IN HTTP://LOCALHOST:8000");
 });
