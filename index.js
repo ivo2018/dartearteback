@@ -19,7 +19,7 @@ import session from "express-session";
 import mysql from "mysql";
 import routerUserCompra from "./routes/users/routesCompra.js";
 import routerUserPedidos from "./routes/users/routesPedido.js";
-const PORT = process.env.PORT || 3977;
+const PORT = process.env.PORT || 8080;
 //import bcrypt from "bcrypt";
 //const saltRounds = 10;
 //import jwt from "jsonwebtoken";
