@@ -19,6 +19,7 @@ import session from "express-session";
 import mysql from "mysql";
 import routerUserCompra from "./routes/users/routesCompra.js";
 import routerUserPedidos from "./routes/users/routesPedido.js";
+const PORT = 8000;
 //import bcrypt from "bcrypt";
 //const saltRounds = 10;
 //import jwt from "jsonwebtoken";
@@ -179,6 +180,6 @@ app.post("/login", (req, res) => {
   );
 });
 */
-app.listen(8000, () => {
+app.listen(PORT, () => {
   console.log("SERVER UP RUNNING IN HTTP://LOCALHOST:8000");
 });
