@@ -10,10 +10,9 @@ import {
   // auth,
 } from "../../controllers/AuthController.js";
 const routerAdmin = express.Router();
-routerAdmin.get("/", getAllAdmin);
+routerAdmin.get("/", verifyToken, getAllAdmin);
 
-//routerAdmin.get("/:id", verifyToken, getAdmin);
-routerAdmin.get("/:id", getAdmin);
+routerAdmin.get("/:id", verifyToken, getAdmin);
 routerAdmin.post("/create", createAdmin);
 
 export default routerAdmin;

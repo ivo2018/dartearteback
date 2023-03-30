@@ -30,10 +30,10 @@ import {
 } from "../../controllers/DestacadosController.js";
 const router2 = express.Router();
 
-router2.get("/", getAllDestacados);
-router2.get("/:id", getDestacado);
-router2.post("/", createDestacado);
-router2.put("/:id", updateDestacado);
-router2.delete("/:id", deleteDestacado);
+router2.get("/", verifyToken, getAllDestacados);
+router2.get("/:id", verifyToken, getDestacado);
+router2.post("/", verifyToken, createDestacado);
+router2.put("/:id", verifyToken, updateDestacado);
+router2.delete("/:id", verifyToken, deleteDestacado);
 
 export default router2;
