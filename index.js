@@ -91,9 +91,7 @@ app.post("/api/checkout", async (req, res) => {
     return res.json({ message: error.raw.message });
   }
 });
-app.get("/", (req, res) => {
-  res.status(200).json({ message: "hola ivo" });
-});
+
 /*
 const dbb = mysql.createConnection({
   user: "root",
