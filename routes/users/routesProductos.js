@@ -10,7 +10,8 @@ import {
 const routerUserProductos = express.Router();
 
 routerUserProductos.get("/", getAllProductos);
-routerUserProductos.get("/:id", verifyToken, getProducto);
+//routerUserProductos.get("/:id", verifyToken, getProducto);
+routerUserProductos.get("/:id", getProducto);
 ///routerUserProductos.post("/", createProducto);
 ///router3.put("/:id", updateProducto);
 ///router3.delete("/:id", deleteProducto);

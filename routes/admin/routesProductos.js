@@ -9,10 +9,10 @@ import {
 } from "../../controllers/ProductosController.js";
 const router3 = express.Router();
 
-router3.get("/", verifyToken, getAllProductos);
-router3.get("/:id", verifyToken, getProducto);
-router3.post("/", verifyToken, createProducto);
-router3.put("/:id", verifyToken, updateProducto);
-router3.delete("/:id", verifyToken, deleteProducto);
+router3.get("/", getAllProductos);
+router3.get("/:id", getProducto);
+router3.post("/", createProducto);
+router3.put("/:id", updateProducto);
+router3.delete("/:id", deleteProducto);
 
 export default router3;
